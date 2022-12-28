@@ -20,20 +20,8 @@ func main() {
 	}
 	defer ch.Close()
 
-	queueName := "example"
-	if _, err := ch.QueueDeclarePassive(
-		queueName,
-		false,
-		false,
-		false,
-		false,
-		nil,
-	); err != nil {
-		log.Panicf("Failed to declare a queue: %v", err)
-	}
-
 	for {
-		msg, ok, err := ch.Get(queueName, false)
+		msg, ok, err := ch.Get("example", false)
 		if err != nil {
 			log.Panicf("Failed to get a message: %v", err)
 		}
