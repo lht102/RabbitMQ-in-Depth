@@ -49,7 +49,7 @@ func main() {
 
 		if unacknowledged == 10 {
 			if err := delivery.Ack(true); err != nil {
-				log.Panicf("Failed to acknowledge a message: %v", err)
+				log.Panicf("Failed to acknowledge messages: %v", err)
 			}
 
 			unacknowledged = 0
